@@ -31,7 +31,7 @@ public class MultidimentionalArrays {
         int len = 0;
         for (int[] line : a)
             if (line.length > len)
-                len = line.length; // Узнаю количество "столбцов" в таблице
+                len = line.length; // Узнаю количество столбцов в таблице
         int[] arrayOfLengths = new int[len]; // Вспомогательный массив длинн
         for (int[] line : a) {
             for (int i = 0; i < line.length; i++)
@@ -42,7 +42,8 @@ public class MultidimentionalArrays {
         for (int[] line : a) {
             for (int i = 0; i < line.length; i++) {
                 d = arrayOfLengths[i] - String.valueOf(line[i]).length();
-                System.out.print("  ");
+                if (i != 0)
+                    System.out.print("  ");
                 for (int j = 0; j < d; j++)
                     System.out.print(" ");
                 System.out.print(line[i]);
