@@ -21,6 +21,9 @@ public class RegularExpressionsTask {
 
         String text4 = "КОТ кот! скот КоТ, который КОТ.";
         System.out.println(HowManyCats(text4));
+
+        String text5 = "У меня 2 яблока и -4 банана";
+        System.out.println(IncreaseByOne(text5));
     }
 
     private static boolean IsEmailAddress1(String email) {
@@ -68,5 +71,23 @@ public class RegularExpressionsTask {
                 count++;
         }
         return count;
+    }
+    private static String IncreaseByOne(String text) {
+        int digit;
+        Pattern number = Pattern.compile("-?(\\d+)");
+        Matcher n = number.matcher(text);
+        while (n.find()) {
+            digit = Integer.parseInt(n.group()) + 1;
+            text = text.replaceAll(n.group(), Integer.toString(digit));
+        }
+        return text;
+
+//        Scanner in = new Scanner(text);
+//        while (in.hasNext()) {
+//            if (in.hasNextInt())
+//                System.out.print(1 + in.nextInt() + " ");
+//            else
+//                System.out.print(in.next() + " ");
+//        }
     }
 }
