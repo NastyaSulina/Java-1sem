@@ -1,3 +1,4 @@
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -57,12 +58,12 @@ public class RegularExpressionsTask {
     }
 
     private static int HowManyCats(String text) {
-        // "\b" символ "границы слова" не работает для кириллицы, поэтому сделала решение со .split()
+        // "\b" символ "границы слова" не работает для кириллицы
         int count = 0;
+        Scanner in = new Scanner(text);
         Pattern catPattern = Pattern.compile("^кот(\\p{Punct}|$)", Pattern.CASE_INSENSITIVE + Pattern.UNICODE_CASE);
-        String[] words = text.split(" ");
-        for (String word : words) {
-            Matcher c = catPattern.matcher(word);
+        while (in.hasNext()) {
+            Matcher c = catPattern.matcher(in.next());
             if (c.find())
                 count++;
         }
