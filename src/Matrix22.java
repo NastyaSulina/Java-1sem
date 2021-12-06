@@ -1,46 +1,57 @@
-import java.util.Arrays;
-
 public class Matrix22 {
 
-    private final int a; // final предложила IDEA
-    private final int b;
-    private final int c;
-    private final int d;
+    private final double a; private final double b;
+    private final double c; private final double d;
 
 
-
-    public Matrix22(int a, int b, int c, int d) {
+    public Matrix22(double a, double b, double c, double d) {
         this.a = a;
         this.b = b;
         this.c = c;
         this.d = d;
     }
 
-    public Matrix22(int[][] array) {
+    public Matrix22(double[][] array) {
         this.a = array[0][0];
         this.b = array[0][1];
         this.c = array[1][0];
         this.d = array[1][1];
     }
 
-    public int Trace() {
+    public double Trace() {
         return a + d;
     }
 
-    public int Discriminant() {
+    public double Discriminant() {
         return a * d - b * c;
     }
 
-    public int[][] getArray() {
-        return new int[][]{{a, b}, {c, d}};
+    public double[][] getArray() {
+        return new double[][]{{a, b}, {c, d}};
     }
 
     public String toString() {
         return "[[" + a + ", " + b + "], [" + c + ", " + d + "]]";
     }
 
+//    public void print() {
+//        System.out.println(a + "  " + b + "\n" + c + "  " + d);
+//    }
+
+    // выравнивание по правому краю
     public void print() {
-        System.out.println(a + "  " + b + "\n" + c + "  " + d);
+        double[][] arr = getArray();
+        for (double[] line : arr) {
+            for (int i = 0; i < 2; i++) {
+                int d = Math.max(String.valueOf(arr[1][i]).length(), String.valueOf(arr[0][i]).length()) - String.valueOf(line[i]).length();
+                if (i != 0)
+                    System.out.print("  ");
+                for (int j = 0; j < d; j++)
+                    System.out.print(" ");
+                System.out.print(line[i]);
+            }
+            System.out.print("\n");
+        }
     }
 
     public Matrix22 add(Matrix22 addedMatrix) {
@@ -48,10 +59,10 @@ public class Matrix22 {
     }
 
     public Matrix22 mul(Matrix22 secondMatrix) {
-        int newA = this.a * secondMatrix.a + this.b * secondMatrix.c;
-        int newB = this.a * secondMatrix.b + this.b * secondMatrix.d;
-        int newC = this.c * secondMatrix.a + this.d * secondMatrix.c;
-        int newD = this.c * secondMatrix.b + this.d * secondMatrix.d;
+        double newA = this.a * secondMatrix.a + this.b * secondMatrix.c;
+        double newB = this.a * secondMatrix.b + this.b * secondMatrix.d;
+        double newC = this.c * secondMatrix.a + this.d * secondMatrix.c;
+        double newD = this.c * secondMatrix.b + this.d * secondMatrix.d;
         return new Matrix22(newA, newB, newC, newD);
     }
 
@@ -60,19 +71,5 @@ public class Matrix22 {
         for (int i = 1; i < n; i++)
             result = result.mul(this);
         return result;
-    }
-
-    public static void main(String[] args) {
-        Matrix22 m1 = new Matrix22(2, 3, 5, 6);
-        Matrix22 m2 = new Matrix22(new int[][]{{6, 7}, {8, 9}});
-
-        System.out.println(m1.Discriminant());
-        System.out.println(m1.Trace());
-        System.out.println(Arrays.deepToString(m2.getArray()));
-        System.out.println(m2);
-        m2.print();
-        System.out.println(m1.add(m2));
-        System.out.println(m1.mul(m2));
-        System.out.println(m1.pow(5));
     }
 }
