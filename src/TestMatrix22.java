@@ -14,5 +14,20 @@ public class TestMatrix22 {
         System.out.println(m1.add(m2));
         System.out.println(m1.mul(m2));
         System.out.println(m1.pow(5));
+
+        System.out.println(getFibonacci(0));
+        System.out.println(getFibonacci(1));
+        System.out.println(getFibonacci(2));
+        System.out.println(getFibonacci(3));
+        System.out.println(getFibonacci(4));
+    }
+    public static double getFibonacci(int n) {
+        if (n == 0)
+            return 0;
+        else {
+            Matrix22 m = new Matrix22(1, 1, 1, 0);
+            double[][] result = m.pow(n - 1).getArray();
+            return result[0][0];
+        }
     }
 }
