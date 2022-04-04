@@ -1,3 +1,5 @@
+package ru.spbu.arts.java.lastsemester;
+
 class IntroTaskCat {
     public static void main(String[] args) {
         int cats = 1;

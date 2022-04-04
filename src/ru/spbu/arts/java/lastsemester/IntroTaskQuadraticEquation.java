@@ -1,3 +1,5 @@
+package ru.spbu.arts.java.lastsemester;
+
 class IntroTaskQuadraticEquation {
     public static void main(String[] args) {
         double a = 4, b = -7, c = 0;

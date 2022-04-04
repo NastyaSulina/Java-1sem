@@ -1,3 +1,5 @@
+package ru.spbu.arts.java.lastsemester;
+
 import java.util.Arrays;
 
 public class ArraysTasks {

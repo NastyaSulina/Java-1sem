@@ -1,3 +1,5 @@
+package ru.spbu.arts.java.lastsemester;
+
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

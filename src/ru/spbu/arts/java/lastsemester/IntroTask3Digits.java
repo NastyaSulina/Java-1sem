@@ -1,3 +1,5 @@
+package ru.spbu.arts.java.lastsemester;
+
 class IntroTask3Digits {
     public static void main(String[] args) {
         int x = 100;

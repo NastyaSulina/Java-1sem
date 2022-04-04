@@ -1,3 +1,5 @@
+package ru.spbu.arts.java.lastsemester;
+
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;

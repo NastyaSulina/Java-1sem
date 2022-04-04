@@ -1,3 +1,5 @@
+package ru.spbu.arts.java.lastsemester;
+
 public class Matrix22 {
 
     private final double a; private final double b;

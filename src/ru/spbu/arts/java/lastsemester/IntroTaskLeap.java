@@ -1,3 +1,5 @@
+package ru.spbu.arts.java.lastsemester;
+
 class IntroTaskLeap {
     public static void main(String[] args) {
         int year = 2100;

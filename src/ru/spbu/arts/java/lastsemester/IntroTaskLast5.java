@@ -1,3 +1,5 @@
+package ru.spbu.arts.java.lastsemester;
+
 class IntroTaskLast5 {
     public static void main(String[] args) {
         int x = -425;
