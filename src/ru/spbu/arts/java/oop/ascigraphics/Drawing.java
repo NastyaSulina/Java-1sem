@@ -1,8 +1,9 @@
 package ru.spbu.arts.java.oop.ascigraphics;
 
 import java.util.Arrays;
+import ru.spbu.arts.java.lambdas.Printable;
 
-public class Drawing {
+public class Drawing implements Printable {
 
     private final int row;
     private final int column;
@@ -15,7 +16,7 @@ public class Drawing {
         for (char[] line : array)
             Arrays.fill(line, symbol);
     }
-
+    @Override
     public void print() {
         for (int i = array.length - 1; i >= 0; i--) {
             for (char c : array[i])
