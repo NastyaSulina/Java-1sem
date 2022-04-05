@@ -8,9 +8,8 @@ public class Rational {
     private int denominator = 1;
 
     public Rational(int numerator, int denominator) {
-        int x;
         if (denominator > 0) {
-            x = gcd(numerator, denominator);
+            int x = gcd(numerator, denominator);
             this.numerator = numerator / x;
             this.denominator = denominator / x;
         } else

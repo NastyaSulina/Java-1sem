@@ -6,16 +6,14 @@ public class Drawing {
 
     private final int row;
     private final int column;
-    private final char symbol;
     private final char[][] array;
 
     public Drawing(int row, int column, char symbol) {
         this.row = row;
         this.column = column;
-        this.symbol = symbol;
         this.array = new char[row][column];
         for (char[] line : array)
-            Arrays.fill(line, this.symbol);
+            Arrays.fill(line, symbol);
     }
 
     public void print() {

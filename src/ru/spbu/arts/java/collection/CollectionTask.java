@@ -103,7 +103,7 @@ public class CollectionTask {
 
     public static void reverseListInPlace(List<String> list){
         String elem;
-        for (int i = 0; i < (list.size() / 2); i++) {
+        for (int i = 0; i < list.size() / 2; i++) {
             elem = list.get(i);
             list.set(i, list.get(list.size() - i - 1));
             list.set(list.size() - i - 1, elem);
@@ -119,7 +119,7 @@ public class CollectionTask {
 
     public static List<Integer> filterEven(List<Integer> list) {
         List<Integer> newList = new ArrayList<>();
-        for (Integer x : list)
+        for (int x : list) // for (Integer x : list) // Полагаем, что наши списки чисел без пустых значений
             if (x % 2 != 0)
                 newList.add(x);
         return newList;
@@ -139,17 +139,29 @@ public class CollectionTask {
                 i--;
             }
     }
-    private static void doReadWordsInFile(String file, Set<String> wordsSet) throws Exception {
+//    private static void doReadWordsInFile(String file, Set<String> wordsSet) throws Exception {
+//        Path txt = Path.of(file);
+//        Pattern wordPattern = Pattern.compile("[а-я]+", Pattern.CASE_INSENSITIVE + Pattern.UNICODE_CASE);
+//        try (Scanner in = new Scanner(txt, StandardCharsets.UTF_8)) {
+//            while (in.hasNext()) {
+//                Matcher c = wordPattern.matcher(in.next());
+//                if (c.find()) {
+//                    String word = c.group().toLowerCase();
+//                    wordsSet.add(word);
+//                }
+//            }
+//        }
+//    }
+
+        private static void doReadWordsInFile(String file, Set<String> wordsSet) throws Exception {
         Path txt = Path.of(file);
-        Pattern wordPattern = Pattern.compile("[а-я]+", Pattern.CASE_INSENSITIVE + Pattern.UNICODE_CASE);
-        try (Scanner in = new Scanner(txt, StandardCharsets.UTF_8)) {
+        try (Scanner in = new Scanner(txt, StandardCharsets.UTF_8).useDelimiter("[^а-яА-Я-]+")) {
             while (in.hasNext()) {
-                Matcher c = wordPattern.matcher(in.next());
-                if (c.find()) {
-                    String word = c.group().toLowerCase();
-                    wordsSet.add(word);
+                String word = in.next().toLowerCase();
+                if (word.equals("-"))
+                    continue;
+                wordsSet.add(word);
                 }
-            }
         }
     }
 }

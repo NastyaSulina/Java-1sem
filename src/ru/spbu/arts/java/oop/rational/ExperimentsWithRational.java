@@ -31,11 +31,30 @@ public class ExperimentsWithRational {
         System.out.println(r2.getDenominator());
 
         // System.out.println(add(r4, r2)); // Для статической версии add
+
+        System.out.println("-------------harmonicSeries2------");
+        System.out.println(harmonicSeries2(1));
+        System.out.println(harmonicSeries2(2));
+        System.out.println(harmonicSeries2(3));
+        System.out.println(harmonicSeries2(19));
+        System.out.println(harmonicSeries2(20));
+        System.out.println(harmonicSeries2(21));
     }
     public static double harmonicSeries(int n){
-        double s = 0;
-        for (int i = 1; i <= n; i++)
-            s += 1.0 / i;
-        return s;
-    }
+        Rational sum = new Rational(0);
+        for (int i = 1; i <= n; i++) {
+            var temp = new Rational(1, i);
+            sum = sum.add(temp);
+        }
+        return sum.toDouble();
+    } // Проблема с f(20) и далее
+
+    public static double harmonicSeries2(int n) {
+        double sum = 0;
+        for (int i = 1; i <= n; i++) {
+            var temp = new Rational(1, i).toDouble();
+            sum += temp;
+        }
+        return sum;
+    } // Работает для f(20) и далее
 }
